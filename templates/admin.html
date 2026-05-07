@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>VoiceSafe Admin Panel</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<h1>VoiceSafe Admin Panel</h1>
+
+<div>
+
+<a href="/">Home</a>
+<a href="/dashboard">Public Dashboard</a>
+
+</div>
+
+</nav>
+
+
+<!-- STATS -->
+
+<section class="stats-container">
+
+<div class="stat-card">
+
+<h3>Total Complaints</h3>
+
+<p>{{ complaints|length }}</p>
+
+</div>
+
+</section>
+
+
+<!-- TABLE -->
+
+<div class="table-container">
+
+<table>
+
+<tr>
+
+<th>ID</th>
+<th>Type</th>
+<th>Location</th>
+<th>Source</th>
+<th>Status</th>
+<th>Resolve</th>
+<th>Delete</th>
+
+</tr>
+
+
+{% for c in complaints %}
+
+<tr>
+
+<td>{{ c[0] }}</td>
+
+<td>{{ c[1] }}</td>
+
+<td>{{ c[2] }}</td>
+
+<td>{{ c[4] }}</td>
+
+<td>{{ c[5] }}</td>
+
+
+<!-- RESOLVE BUTTON -->
+
+<td>
+
+<a
+href="/resolve/{{ c[0] }}"
+class="resolve-btn">
+
+Resolve
+
+</a>
+
+</td>
+
+
+<!-- DELETE BUTTON -->
+
+<td>
+
+<a
+href="/delete/{{ c[0] }}"
+class="delete-btn">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+VoiceSafe Admin Management System
+</p>
+
+</footer>
+
+</body>
+</html>

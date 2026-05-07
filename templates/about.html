@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>About VoiceSafe</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<h1>VoiceSafe</h1>
+
+<div>
+
+<a href="/">Home</a>
+<a href="/dashboard">Dashboard</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+
+</div>
+
+</nav>
+
+
+<!-- ABOUT SECTION -->
+
+<div class="page-card">
+
+<h2>About VoiceSafe</h2>
+
+<br>
+
+<p>
+VoiceSafe is a web-based smart complaint management system
+for water-related issues integrated with IoT-enabled
+automatic leakage detection.
+</p>
+
+<br>
+
+<p>
+The system allows citizens to register complaints related
+to water leakage, water quality, and supply disruptions
+through a website.
+</p>
+
+<br>
+
+<p>
+In addition, a flow sensor connected to an ESP32
+microcontroller automatically detects leakage using
+a threshold-based model
+(flow below 80% of calibrated normal flow)
+and registers complaints through the web platform.
+</p>
+
+<br>
+
+<p>
+Existing complaint systems rely mainly on manual
+reporting and delayed response.
+VoiceSafe combines manual complaint reporting
+with proactive sensor-triggered alerts.
+</p>
+
+<br>
+
+<h2>Technologies Used</h2>
+
+<br>
+
+<ul>
+
+<li>
+Frontend: HTML, CSS
+</li>
+
+<li>
+Backend: Python Flask
+</li>
+
+<li>
+Database: MySQL
+</li>
+
+<li>
+Hardware: Flow Sensor + ESP32
+</li>
+
+</ul>
+
+<br>
+
+<p>
+Results show successful complaint registration
+from users and simulated automatic complaint
+generation through sensor logic.
+</p>
+
+<br>
+
+<p>
+The system demonstrates low-cost smart water
+monitoring with future scope for smart city applications.
+</p>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+VoiceSafe | Smart Water Complaint & Leakage Detection System
+</p>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>VoiceSafe</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<h1>VoiceSafe</h1>
+
+<div>
+
+<a href="/">Home</a>
+<a href="/dashboard">Dashboard</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+
+</div>
+
+</nav>
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h2>
+Smart Water Complaint & Leakage Detection System
+</h2>
+
+<p>
+Register water complaints and monitor automatic leakage alerts.
+</p>
+
+<a href="#form-section" class="hero-btn">
+Register Complaint
+</a>
+
+</div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="feature-box">
+
+<h3>Manual Complaints</h3>
+
+<p>
+Users can report water leakage,
+quality and supply issues.
+</p>
+
+</div>
+
+
+<div class="feature-box">
+
+<h3>Automatic Leak Detection</h3>
+
+<p>
+ESP32 sensors automatically
+register complaints.
+</p>
+
+</div>
+
+
+<div class="feature-box">
+
+<h3>Smart Dashboard</h3>
+
+<p>
+Track all complaints in one place.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- COMPLAINT FORM -->
+
+<section class="form-section" id="form-section">
+
+<div class="form-card">
+
+<h2>Register Complaint</h2>
+
+<form action="/submit" method="post">
+
+
+<label>Complaint Type</label>
+
+<select name="type">
+
+<option>Leakage</option>
+<option>Water Quality</option>
+<option>Water Supply</option>
+<option>Infrastructure</option>
+
+</select>
+
+
+<label>Location</label>
+
+<input
+type="text"
+name="location"
+placeholder="Enter complaint location"
+required>
+
+
+<label>Description</label>
+
+<textarea
+name="description"
+placeholder="Describe the issue"
+required>
+</textarea>
+
+
+<button type="submit">
+Submit Complaint
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+AISSMS IOIT Pune | VoiceSafe Project | 2025-26
+</p>
+
+</footer>
+
+</body>
+</html>

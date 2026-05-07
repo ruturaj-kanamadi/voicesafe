@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>VoiceSafe Dashboard</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<h1>VoiceSafe Dashboard</h1>
+
+<div>
+
+<a href="/">Home</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+
+</div>
+
+</nav>
+
+
+<!-- STATS SECTION -->
+
+<section class="stats-container">
+
+<div class="stat-card">
+
+<h3>Total Complaints</h3>
+
+<p>{{ complaints|length }}</p>
+
+</div>
+
+</section>
+
+
+<!-- COMPLAINT TABLE -->
+
+<div class="table-container">
+
+<table>
+
+<tr>
+
+<th>ID</th>
+<th>Type</th>
+<th>Location</th>
+<th>Source</th>
+<th>Status</th>
+
+</tr>
+
+
+{% for c in complaints %}
+
+<tr>
+
+<td>{{ c[0] }}</td>
+
+<td>{{ c[1] }}</td>
+
+<td>{{ c[2] }}</td>
+
+<td>{{ c[4] }}</td>
+
+<td>{{ c[5] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+VoiceSafe | Smart Water Complaint & Leakage Detection System
+</p>
+
+</footer>
+
+</body>
+</html>
