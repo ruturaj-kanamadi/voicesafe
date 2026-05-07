@@ -9,11 +9,10 @@ app = Flask(__name__)
 def get_db_connection():
 
     return mysql.connector.connect(
-        host="mysql.railway.internal",
+        host="localhost",
         user="root",
-        password="wstsWjlCjLVxzGUpkGrvbYHrnJbKegGo",
-        database="railway",
-        port=3306
+        password="#rrk2007",
+        database="voicesafe"
     )
 
 
@@ -39,6 +38,40 @@ def about():
 def contact():
 
     return render_template('contact.html')
+
+
+# SUBMIT MANUAL COMPLAINT
+
+@app.route('/submit', methods=['POST'])
+def submit():
+
+    ctype = request.form['type']
+    location = request.form['location']
+    description = request.form['description']
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    sql = """
+    INSERT INTO complaints
+    (type, location, description, source, status)
+    VALUES (%s, %s, %s, %s, %s)
+    """
+
+    values = (
+        ctype,
+        location,
+        description,
+        'User',
+        'Pending'
+    )
+
+    cursor.execute(sql, values)
+
+    conn.commit()
+    conn.close()
+
+    return redirect('/dashboard')
 
 
 # PUBLIC DASHBOARD
@@ -85,40 +118,6 @@ def admin():
     )
 
 
-# SUBMIT MANUAL COMPLAINT
-
-@app.route('/submit', methods=['POST'])
-def submit():
-
-    ctype = request.form['type']
-    location = request.form['location']
-    description = request.form['description']
-
-    conn = get_db_connection()
-    cursor = conn.cursor()
-
-    sql = """
-    INSERT INTO complaints
-    (type, location, description, source, status)
-    VALUES (%s, %s, %s, %s, %s)
-    """
-
-    values = (
-        ctype,
-        location,
-        description,
-        "User",
-        "Pending"
-    )
-
-    cursor.execute(sql, values)
-
-    conn.commit()
-    conn.close()
-
-    return redirect('/dashboard')
-
-
 # RESOLVE COMPLAINT
 
 @app.route('/resolve/<int:id>')
@@ -157,7 +156,7 @@ def delete(id):
     return redirect('/admin')
 
 
-# AUTO SENSOR COMPLAINT API
+# AUTO SENSOR COMPLAINT
 
 @app.route('/auto-complaint', methods=['POST'])
 def auto_complaint():
@@ -177,8 +176,8 @@ def auto_complaint():
         data['type'],
         data['location'],
         data['description'],
-        "Sensor",
-        "Pending"
+        'Sensor',
+        'Pending'
     )
 
     cursor.execute(sql, values)
@@ -187,7 +186,7 @@ def auto_complaint():
     conn.close()
 
     return {
-        "message": "Auto complaint registered successfully"
+        "message": "Auto complaint registered"
     }
 
 
